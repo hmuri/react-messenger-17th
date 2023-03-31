@@ -17,6 +17,7 @@ const Sender = styled.button<{isActive: boolean}>`
     background-position : center;
     margin : 5px 10px 3px 10px;
     background-image : url(${props => props.isActive === true? Ron: Malfoy});
+    background-size: cover;
 
 `
 const Receiver = styled.button<{isActive: boolean}>`
@@ -25,38 +26,27 @@ const Receiver = styled.button<{isActive: boolean}>`
     border-radius : 100%;
     background-position : center;
     margin : 5px 10px 3px 10px;
-    background-image : url(${props => props.isActive === true? Malfoy: Ron});
-
+    background-image : url(${props => props.isActive === false? Ron: Malfoy});
+    background-size : cover;
 `
 const ChooseMain = () => {
     const [checked, setChecked] = useState<boolean>(false);
     const [chats, setChats] = useRecoilState<IChatTypes[]>(chatState);
 
-    const onClick_sender = (e: React.MouseEvent<HTMLButtonElement>) =>{
+    const onClickProfile = (e: React.MouseEvent<HTMLButtonElement>) =>{
         e.preventDefault();
-        setChecked(true);
-        setChats( chats=>
-            chats.map((chat: IChatTypes)=>
-                chat.checked===checked ? chat:chat,
-            )
-        );
-    }
-
-    const onClick_receiver = (e: React.MouseEvent<HTMLButtonElement>) =>{
-        e.preventDefault();
-        setChecked(true);
+        setChecked(!checked);
         setChats( chats=>
             chats.map((chat: IChatTypes)=>
                 chat.checked===checked ? {...chat, checked: !chat.checked}:{...chat, checked: !chat.checked},
             )
         );
-
-        console.log(chats);
     }
+
         return (
             <ProfileBox>
-                <Sender onClick={onClick_sender} isActive={checked}/>
-                <Receiver onClick={onClick_receiver} isActive={checked}/>
+                <Sender onClick={onClickProfile} isActive={checked}/>
+                <Receiver onClick={onClickProfile} isActive={checked}/>
             </ProfileBox>
         );
 };

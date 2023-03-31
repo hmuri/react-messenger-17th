@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {useCallback, useState} from 'react';
+import {useCallback, useState, useEffect} from 'react';
 import { IChatTypes } from '../Recoil/chat';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import Ron from "../images/Ron.jpeg";
@@ -8,7 +8,6 @@ import Malfoy from "../images/Malfoy.jpeg";
 const ChatBox = styled.div`
     display : flex;
     justify-content : flex-start;
-
 `
 const TextBox = styled.div<{isActive: boolean}>`
     background-color : ${props => props.isActive === true ? "yellow" : "white"};
@@ -21,28 +20,32 @@ const TextBox = styled.div<{isActive: boolean}>`
     margin-top: 17px;
     margin-bottom: 3px;
     padding : 5px 7px 3px 6px;
-    border-radius : 3%;
-    
+    border-radius : 3%; 
 `
-const Profile = styled.div<{isActive: boolean}>`
+const Profile = styled.div<{isActive_1: boolean; isActive_2: boolean}>`
     width : 3rem;
     height : 3rem;
     border-radius : 100%;
     background-position : center;
     margin : 5px 10px 3px 10px;
-    background-image : url(${props => props.isActive === true? Ron: Malfoy});
+    background-image : url(${props => props.isActive_2 === true? Ron: Malfoy});
+    background-size : cover;
     
-    display: ${props => props.isActive === true? "none" : "flex"};
+    display: ${props => props.isActive_1 === true? "none" : "flex"};
 `
 
 const ChatItem= ({
     sender, receiver, checked, text
 }: IChatTypes) => {
+    const [check, setChecked] = useState<boolean>(checked);
+    useEffect(()=>{
+        setChecked(check)
+    }, [checked])
     return(
         <ChatBox>
             <Profile
-                
-                isActive={checked}
+                isActive_1={checked}
+                isActive_2={check}
             />
             <TextBox isActive={checked}>{text}</TextBox>
         </ChatBox>
