@@ -13,6 +13,11 @@ export const inputState = atom<string>({
     default : '',
 });
 
+export const sendState = atom<boolean>({
+    key: 'sendState',
+    default : true,
+})
+
 export const chatState = atom<IChatTypes[]>({
     key: 'chats',
 

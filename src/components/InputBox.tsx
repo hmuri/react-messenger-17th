@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {useState, useCallback} from 'react';
+import {useState, useCallback, useEffect, useRef} from 'react';
 import {inputState, chatState, IChatTypes} from '../Recoil/chat';
 import {useRecoilState, useRecoilValue} from 'recoil';
 
@@ -45,6 +45,14 @@ const InputBox = () => {
     const [button, setButton] = useState(true);
     const [chats, setChats] = useRecoilState<IChatTypes[]>(chatState);
 
+    const inputRef = useRef();
+
+    /*const scrollToBottom = () =>{
+        if(inputRef.current){
+            inputRef.current.scrollTop = inputRef.current.scrollHeight;
+        }
+    };*/
+
     const addChat = (value: string) => {
         const chat: IChatTypes = {
             sender: 0,
@@ -54,6 +62,8 @@ const InputBox = () => {
         };
         setChats(chats.concat(chat));
         setValue('');
+        //scrollToBottom();
+
     }
 
     const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>): void =>{
@@ -66,6 +76,7 @@ const InputBox = () => {
         e.preventDefault();
         addChat(value);
         setValue('');
+        setButton(true);
    //}, [addChat]);
     };
     
@@ -76,6 +87,7 @@ const InputBox = () => {
                     type="text"
                     value={value}
                     onChange={onChange}
+                    //ref={inputRef}
                     ></TextInput>
                 <InputButton disabled={button}>💫</InputButton>
             </form>

@@ -23,6 +23,7 @@ const ChatBox = styled.div`
     background-color: #9bbbd4;
     width : 100%;
     height: 42rem;
+    overflow: auto;
 `
 
 // 확장할 떄 App.tsx => ./pages/ChatRoom.tsx로 옮기기

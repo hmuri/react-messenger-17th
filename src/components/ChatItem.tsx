@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import {useCallback, useState} from 'react';
 import { IChatTypes } from '../Recoil/chat';
 import {useRecoilState, useRecoilValue} from 'recoil';
+import Ron from "../images/Ron.jpeg";
+import Malfoy from "../images/Malfoy.jpeg";
 
 const ChatBox = styled.div`
     display : flex;
@@ -22,23 +24,24 @@ const TextBox = styled.div<{isActive: boolean}>`
     border-radius : 3%;
     
 `
-const Profile = styled.img<{isActive: boolean}>`
+const Profile = styled.div<{isActive: boolean}>`
     width : 3rem;
     height : 3rem;
     border-radius : 100%;
     background-position : center;
-    margin : 5px 10px 3px 10px;  
+    margin : 5px 10px 3px 10px;
+    background-image : url(${props => props.isActive === true? Ron: Malfoy});
+    
     display: ${props => props.isActive === true? "none" : "flex"};
 `
 
 const ChatItem= ({
     sender, receiver, checked, text
 }: IChatTypes) => {
-    console.log(checked);
     return(
         <ChatBox>
-            <Profile 
-                src = {'src/images/Ron.jpeg'}
+            <Profile
+                
                 isActive={checked}
             />
             <TextBox isActive={checked}>{text}</TextBox>
@@ -46,6 +49,6 @@ const ChatItem= ({
         
     );
 }
-
+//나중에는 sender와 receiver로 이미지 넣기
 
 export default ChatItem;
