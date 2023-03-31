@@ -4,6 +4,7 @@ import {recoilPersist} from 'recoil-persist';
 export interface IChatTypes{
     sender : number;
     receiver : number;
+    checked : boolean;
     text : string;
 }
 
@@ -19,11 +20,13 @@ export const chatState = atom<IChatTypes[]>({
         {
             sender : 0,
             receiver : 1,
+            checked : false,
             text : '왜들 그리 다운돼있어',
         },
         {
             sender : 0,
             receiver : 1,
+            checked : false,
             text : '뭐가 문제야 Say Something',
         }
     ],

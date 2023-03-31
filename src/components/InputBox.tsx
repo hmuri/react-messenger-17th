@@ -4,35 +4,37 @@ import {inputState, chatState, IChatTypes} from '../Recoil/chat';
 import {useRecoilState, useRecoilValue} from 'recoil';
 
 const Container = styled.div`
-    width: 100%;
-    height: 3rem;
-    background-color : grey;
+    display: flex;
+    width: 99.5%;
+    height: 4rem;
+    background-color : black;
     border : solid 1px black;
     z-index: 5;
     bottom: 3rem;
-    display: flex;
 `
 
 const TextInput = styled.input`
-    position: relative;
-    width: 85%;
-    height: 95%;
-    margin-left: 3px;
+    position : relative;
+    width: 20rem;
+    height: 75%;
+    padding: 0 3px 0 3px;
+    margin : 2% 3px 1px 5px;
     background-color: white;
     font-size: 13px;
     color: black;
-    border: solid 1px black;
+    border: none;
     overflow: hidden;
 `
 const InputButton = styled.button`
-    position: relative;
-    background-color: ${props=> props.disabled === true ? "gray" : "white"};
-    font-size : 30px;
-    width: 13%;
-    height: 97%;
+    position : relative;
+    background-color: ${props=> props.disabled === true ? "black" : "white"};
+    font-size : 15px;
+    width: 3rem;
+    height: 75%;
+    margin-left : 5px;
     text-align: center;
-    border: solid 1px black;
-    border: solid 0.5px white;
+    border: solid 1px grey;
+    border-radius : 20%;
     cursor : pointer;
 
 `
@@ -43,20 +45,11 @@ const InputBox = () => {
     const [button, setButton] = useState(true);
     const [chats, setChats] = useRecoilState<IChatTypes[]>(chatState);
 
-    /*const addChat = useCallback(() :void =>{
-        const chat: IChatTypes = {
-            sender: 0,
-            receiver: 1,
-            text : value,
-        };
-    setChats([...chats, chat]);
-    setValue('');
-    }, [value, setValue, setChats, chats]);*/
-
     const addChat = (value: string) => {
         const chat: IChatTypes = {
             sender: 0,
             receiver: 1,
+            checked: true,
             text : value,
         };
         setChats(chats.concat(chat));
@@ -64,13 +57,15 @@ const InputBox = () => {
     }
 
     const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>): void =>{
+        e.preventDefault();
+        e.target.value.trim()=="" ? setButton(true) : setButton(false);
         setValue(e.target.value);
-        e.target.value.trim()!="" ? setButton(false) : setButton(true);
     }, [setValue]);
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>): void =>{
         e.preventDefault();
-        addChat(value);   
+        addChat(value);
+        setValue('');
    //}, [addChat]);
     };
     

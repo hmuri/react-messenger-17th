@@ -1,9 +1,11 @@
 import {useState} from 'react';
 import styled from 'styled-components';
 import InputBox from './components/InputBox';
+import ChatList from './components/ChatList';
 import {useRecoilState} from 'recoil';
 import { chatState, IChatTypes } from './Recoil/chat';
-import ChatList from './components/ChatList';
+import ChooseMain from './components/ChooseMain';
+
 
 
 const Container = styled.div`
@@ -22,6 +24,7 @@ const ChatBox = styled.div`
     width : 100%;
     height: 42rem;
 `
+
 // 확장할 떄 App.tsx => ./pages/ChatRoom.tsx로 옮기기
 
 
@@ -37,8 +40,9 @@ function App() {
   };*/
   return (
     <Container>
+      <ChooseMain/>
       <ChatBox>
-        <ChatList/>
+      <ChatList/>
       </ChatBox>
       <InputBox/>
     </Container>
