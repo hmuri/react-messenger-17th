@@ -1,51 +1,42 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import InputBox from './components/InputBox';
 import ChatList from './components/ChatList';
-import {useRecoilState} from 'recoil';
+import { useRecoilState } from 'recoil';
 import { chatState, IChatTypes } from './Recoil/chat';
 import ChooseMain from './components/ChooseMain';
-
-
+import HwBgImg from './images/HwBgImg.png';
+import WideBgImg from './images/WideBgImg.jpeg';
 
 const Container = styled.div`
-    background-color: grey;
-    display: flex;
-    width: 25rem;
-    margin: auto;
-    height: 40rem;
-
-    flex-direction : column;
-    border : solid 1px black;
-`
+  display: flex;
+  width: 25rem;
+  margin: auto;
+  height: 47rem;
+  padding-top: 7rem;
+  flex-direction: column;
+  border: solid 1px black;
+`;
 
 const ChatBox = styled.div`
-    background-color: #9bbbd4;
-    width : 100%;
-    height: 42rem;
-    overflow: auto;
-`
+  background-image: url(${HwBgImg});
+  background-size: cover;
+  width: 100%;
+  height: 42rem;
+  overflow: auto;
+`;
 
 // 확장할 떄 App.tsx => ./pages/ChatRoom.tsx로 옮기기
 
-
 function App() {
   const [chats, setChats] = useRecoilState<IChatTypes[]>(chatState);
-  /*const addChatList = (id: number, text : string) => {
-    const chat ={
-      id : getId,
-      text : text
-    }
-    setChats(chats => chats.concat(chat));
-    getId++;
-  };*/
   return (
     <Container>
-      <ChooseMain/>
+      <ChooseMain />
       <ChatBox>
-      <ChatList/>
+        <ChatList />
       </ChatBox>
-      <InputBox/>
+      <InputBox />
     </Container>
   );
 }
