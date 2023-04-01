@@ -25,8 +25,8 @@ const TextBox = styled.div<{ isActive: boolean }>`
   opacity: 0.8;
 `;
 const Profile = styled.div<{ isActive_1: boolean; isActive_2: boolean }>`
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 100%;
   background-position: center;
   margin: 5px 10px 3px 10px;

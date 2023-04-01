@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { inputState, chatState, IChatTypes } from '../Recoil/chat';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import PuppleSmk from '../images/PuppleSmk.png';
+import GreySmk from '../images/GreySmk.png';
 
 const Container = styled.div`
   display: flex;
@@ -29,7 +31,9 @@ const TextInput = styled.input`
 const InputButton = styled.button`
   position: relative;
   background-color: #f7def7;
-  color: ${(props) => (props.disabled === true ? 'black' : 'white')};
+  background-image: url(${(props) =>
+    props.disabled === true ? GreySmk : PuppleSmk});
+  background-size: cover;
   font-size: 15px;
   width: 3rem;
   height: 75%;
