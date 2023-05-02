@@ -31,7 +31,7 @@ const Profile = styled.div<{ isActive_1: boolean; isActive_2: boolean }>`
   background-position: center;
   margin: 5px 10px 3px 10px;
   background-image: url(${(props) =>
-    props.isActive_2 === true ? Ron : Malfoy});
+    props.isActive_1 === props.isActive_2 ? Ron : Malfoy});
   background-size: cover;
   border: solid 1px #ffccff;
   opacity: 0.9;
@@ -39,9 +39,10 @@ const Profile = styled.div<{ isActive_1: boolean; isActive_2: boolean }>`
 `;
 
 const ChatItem = ({ sender, receiver, checked, text }: IChatTypes) => {
-  const [check, setChecked] = useState<boolean>(checked);
+  const [check, setChecked] = useState<boolean>(false);
   useEffect(() => {
-    setChecked(check);
+    setChecked(!check);
+    console.log(check, checked);
   }, [checked]);
   return (
     <ChatBox>

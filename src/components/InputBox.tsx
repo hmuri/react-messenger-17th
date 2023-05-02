@@ -30,7 +30,7 @@ const TextInput = styled.input`
 `;
 const InputButton = styled.button`
   position: relative;
-  background-color: #f7def7;
+  background-color: #827694;
   background-image: url(${(props) =>
     props.disabled === true ? GreySmk : PuppleSmk});
   background-size: cover;
