@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useLocation, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Main from './page/Main';
 import List from './page/List';
@@ -12,7 +12,6 @@ const Container = styled.div`
 `
 
 function App() {
-  const location = useLocation();
   return (
     <Container>
       <Routes>          
