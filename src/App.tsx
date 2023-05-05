@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
+import {RecoilRoot} from 'recoil';
 
 import Main from './page/Main';
 import List from './page/List';
@@ -14,12 +15,14 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <Routes>          
-        <Route path="/" element={<Main/>}/>
-        <Route path="/chatList" element={<List/>}/>
-        <Route path="/chatRoom" element={<Room/>}/>          
-        <Route path="/setting" element={<Setting/>}/>
-      </Routes>
+      <RecoilRoot>
+        <Routes>          
+          <Route path="/" element={<Main/>}/>
+          <Route path="/chatList" element={<List/>}/>
+          <Route path="/chatRoom" element={<Room/>}/>          
+          <Route path="/setting" element={<Setting/>}/>
+        </Routes>
+      </RecoilRoot>
     </Container>
   );
 }

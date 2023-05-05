@@ -1,6 +1,6 @@
 const color = {
   grf: "#580007",
-  hfl: "#FFC453",
+  hfl: "#d9a541",
   rav: "#00214A",
   sly: "#004947"
 }
