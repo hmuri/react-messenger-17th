@@ -1,31 +1,31 @@
 {  
     "chatrooms": [
         { 
-        "roomId":10,
+        "roomId":0,
         "dorm": "grf",
         "chat": [
-            {"sender": 10, "chat": "익스펙토 페트로눔!"}
+            {"sender": 0, "chat": "익스펙토 페트로눔!"}
         ]
         },
         { 
-        "roomId":11,
+        "roomId":1,
         "dorm": "hfl",
         "chat": [
-            {"sender": 11, "chat": "프로테고!"}
+            {"sender": 1, "chat": "프로테고!"}
         ]
         },
         { 
-        "roomId":12,
+        "roomId":2,
         "dorm": "sly",
         "chat": [
-            {"sender": 12, "chat": "스투페파이!"}
+            {"sender": 2, "chat": "스투페파이!"}
         ]
         },
         { 
-        "roomId":13,
+        "roomId":3,
         "dorm": "rav",
         "chat": [
-            {"sender": 13, "chat": "윙가르디움 레비오우사~"}
+            {"sender": 3, "chat": "윙가르디움 레비오우사~"}
         ]
         }
     ]   

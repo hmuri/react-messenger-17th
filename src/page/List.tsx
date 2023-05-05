@@ -1,10 +1,13 @@
 import {useState} from 'react';
 import {useRecoilValue} from 'recoil';
-import {userDorm} from '../recoil';
+import {userDorm, activeUserSelector} from '../recoil';
 import styled from 'styled-components';
 import {useLocation} from 'react-router-dom';
 import theme from "../style/theme";
 import Navigation from '../components/Navigation';
+import MainProfile from '../components/MainProfile';
+import userInfo from '../json/userInfo.json';
+import FriendProfile from '../components/FriendProfile';
 
 
 const Container = styled.div<{dorm: string}>`
@@ -47,13 +50,14 @@ const ListBox = styled.div`
     width: 100%;
     height: 100%;
     background-color: black;
+`
+const FriendBox = styled.div`
 
 `
 
 
 const List= () =>{
     const user = useRecoilValue(userDorm);
-
 
     return(
         <Container dorm={user.dorm}>
@@ -62,7 +66,27 @@ const List= () =>{
             </TitleBox>
             <TalkBox>
                 <Navigation/>
-                <ListBox/>
+                <ListBox>
+                    <MainProfile/>
+                    <FriendBox>
+                        {userInfo.map((userInform, index) => (
+                            <>
+                                {userInform.userDorm!=user.dorm?
+                                <FriendProfile
+                                name={userInform.userName}
+                                id={index}
+                                dorm={userInform.userDorm}
+                                msg={userInform.hmsg}
+                                img={userInform.userImage}
+                                />
+                                :
+                                <></>
+                                }
+                            </>
+                        ))}
+
+                    </FriendBox>
+                </ListBox>
             </TalkBox>
         </Container>
     );

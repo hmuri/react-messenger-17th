@@ -4,10 +4,6 @@ import chatInfo from './json/chatInfo.json';
 import userInfo from './json/userInfo.json';
 
 
-export const activeId = atom<number>({
-    key: 'activeId',
-    default: 0,
-});
 
 export const chatList = atom<ChatRoom[]>({
     key: "chat",
@@ -28,7 +24,7 @@ export const activeRoomSelector = selector({
     get: ({ get }) => {
         const chatRooms = get(chatList);
         const activeRoom = chatRooms.find(
-            (chatroom) => chatroom.roomId === get(activeRoomId)
+            (chatroom) => chatroom.roomId === get(activeRoomId)!
         );
         return activeRoom;
     },
@@ -44,13 +40,13 @@ export const userList = atom<User[]>({
     default: userInfo,
 });
 
-/*export const activeUserSelector = selector({
+export const activeUserSelector = selector({
     key: "activeUser",
     get: ({ get }) => {
         const users = get(userList);
         const activeUser = users.find(
-            (user) => user.userId === get(activeRoomSelector)!.chat.sender
+            (user) => user.userDorm === get(userDorm)!.dorm
         );
         return activeUser;
     },
-});*/
+});
