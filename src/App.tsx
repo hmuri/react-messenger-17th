@@ -6,6 +6,7 @@ import Main from './page/Main';
 import List from './page/List';
 import Room from './page/Room';
 import Setting from './page/Setting';
+import ActingRoom from './page/ActingRoom';
 
 
 const Container = styled.div`
@@ -21,6 +22,7 @@ function App() {
           <Route path="/chatList" element={<List/>}/>
           <Route path="/chatRoom" element={<Room/>}/>          
           <Route path="/setting" element={<Setting/>}/>
+          <Route path="/chatRoom/:roomId" element={<ActingRoom/>}/>
         </Routes>
       </RecoilRoot>
     </Container>

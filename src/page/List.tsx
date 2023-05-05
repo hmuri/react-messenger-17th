@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import {useRecoilValue} from 'recoil';
-import {userDorm, activeUserSelector} from '../recoil';
+import {useRecoilValue, useRecoilState} from 'recoil';
+import {userDorm, activeUserSelector, activeSender} from '../recoil';
 import styled from 'styled-components';
 import {useLocation} from 'react-router-dom';
 import theme from "../style/theme";
@@ -58,6 +58,10 @@ const FriendBox = styled.div`
 
 const List= () =>{
     const user = useRecoilValue(userDorm);
+    const [active, setActiveSender] = useRecoilState(activeSender);
+    setActiveSender(user.id);
+    console.log(active);
+    console.log('이거 위');
 
     return(
         <Container dorm={user.dorm}>
