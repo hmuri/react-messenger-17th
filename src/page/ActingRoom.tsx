@@ -67,11 +67,11 @@ const ActingRoom= () =>{
     const roomInfo = useRecoilValue(activeRoomSelector);
     const other =  useRecoilValue(activeOtherSelector);
     const [activeRoom, setRoomId] = useRecoilState(activeRoomId);
-    const msgRef = useRef<HTMLUListElement>(null);
+    /*const msgRef = useRef<HTMLUListElement>(null);*/
 
     if (!other) return null;
 
-    const scrollToBottom = () =>{
+    /*const scrollToBottom = () =>{
         if(msgRef.current){
             msgRef.current!.scrollTop = msgRef.current!.scrollHeight;
         }
@@ -82,7 +82,7 @@ const ActingRoom= () =>{
         scrollToBottom();
     }, [roomInfo])
 
-
+*/
     return(
         <Container dorm={user.dorm}>
             <TitleBox>
